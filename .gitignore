@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,vue
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,vue
 
+## Test front-end code for back-end
+views/
+public/
+
 ### Node ###
 # Logs
 logs
