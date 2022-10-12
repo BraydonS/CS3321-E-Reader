@@ -16,7 +16,7 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   User.findOne({ email: email }).then((user) => {
     if (!user) {
-      return res.redirect("/login");
+      return res.redirect("/");
     }
     bcrypt
       .compare(password, user.password)
@@ -29,11 +29,11 @@ exports.postLogin = (req, res, next) => {
             res.redirect("/admin/books");
           });
         }
-        res.redirect("/login");
+        res.redirect("/");
       })
       .catch((err) => {
         console.log(err);
-        res.redirect("/login");
+        res.redirect("/");
       });
   });
 };

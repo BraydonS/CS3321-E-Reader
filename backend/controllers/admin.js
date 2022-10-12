@@ -1,4 +1,5 @@
 const Book = require("../models/book");
+const User = require("../models/user");
 
 exports.getAddBook = (req, res, next) => {
   res.render("admin/edit-book", {
@@ -13,14 +14,27 @@ exports.postAddBook = (req, res, next) => {
   const title = req.body.title;
   const writer = req.body.writer;
   const description = req.body.description;
+  const userId = req.session.user;
   console.log(req);
   const book = new Book({
     title: title,
     writer: writer,
     description: description,
-    userId: req.session.user,
+    userId: userId,
   });
   book.save().then((result) => {
+    // console.log("book info");
+    // console.log(result);
+    // const bookId = result._id;
+    // console.log(bookId);
+    // User.findOne({ _id: userId }).then((user) => {
+    //   console.log("user");
+
+    //   console.log(user);
+    //   console.log(bookId);
+
+    //   user.library.items.push(bookId);
+    // });
     console.log("Added Book");
     res.redirect("/admin/books");
   });

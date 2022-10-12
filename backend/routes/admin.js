@@ -4,18 +4,20 @@ const express = require("express");
 
 const adminController = require("../controllers/admin");
 
+const isAuth = require("../middleware/is-auth");
+
 const router = express.Router();
 
-router.get("/books", adminController.getBooks);
+router.get("/books", isAuth, adminController.getBooks);
 
-router.get("/add-book", adminController.getAddBook);
+router.get("/add-book", isAuth, adminController.getAddBook);
 
-router.post("/add-book", adminController.postAddBook);
+router.post("/add-book", isAuth, adminController.postAddBook);
 
-router.get("/edit-book/:bookId", adminController.getEditBook);
+router.get("/edit-book/:bookId", isAuth, adminController.getEditBook);
 
-router.post("/edit-book", adminController.postEditBook);
+router.post("/edit-book", isAuth, adminController.postEditBook);
 
-router.post("/delete-book", adminController.postDeleteBook);
+router.post("/delete-book", isAuth, adminController.postDeleteBook);
 
 module.exports = router;
