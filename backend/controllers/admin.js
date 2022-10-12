@@ -1,16 +1,11 @@
 const Book = require("../models/book");
 
-exports.test = (req, res, next) => {
-  res.render("admin/testtt", {
-    path: "/admin/test",
-  });
-};
-
 exports.getAddBook = (req, res, next) => {
   res.render("admin/edit-book", {
     pageTitle: "Add Book",
     path: "/admin/add-book",
     editing: false,
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 
@@ -23,7 +18,7 @@ exports.postAddBook = (req, res, next) => {
     title: title,
     writer: writer,
     description: description,
-    userId: req.user,
+    userId: req.session.user,
   });
   book.save().then((result) => {
     console.log("Added Book");
@@ -48,6 +43,7 @@ exports.getEditBook = (req, res, next) => {
         path: "/admin/edit-book",
         editing: editMode,
         book: book,
+        isAuthenticated: req.session.isLoggedIn,
       });
     })
     .catch((err) => console.log(err));
@@ -80,7 +76,18 @@ exports.getBooks = (req, res, next) => {
         books: books,
         pageTitle: "Book List",
         path: "/admin/books",
+        isAuthenticated: req.session.isLoggedIn,
       });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postDeleteBook = (req, res, next) => {
+  const bookId = req.body.bookId;
+  Book.findByIdAndRemove(bookId)
+    .then(() => {
+      console.log("DESTROYED BOOK");
+      res.redirect("/admin/books");
     })
     .catch((err) => console.log(err));
 };
