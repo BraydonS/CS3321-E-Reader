@@ -22,22 +22,27 @@ exports.postAddBook = (req, res, next) => {
     description: description,
     userId: userId,
   });
-  book.save().then((result) => {
-    // console.log("book info");
-    // console.log(result);
-    // const bookId = result._id;
-    // console.log(bookId);
-    // User.findOne({ _id: userId }).then((user) => {
-    //   console.log("user");
+  book
+    .save()
+    .then((result) => {
+      console.log("book info");
+      console.log(result);
+      const bookId = result._id;
+      console.log(bookId);
+      return req.user.addToLibrary(result);
+      // User.findOne({ _id: userId }).then((user) => {
+      //   console.log("user");
 
-    //   console.log(user);
-    //   console.log(bookId);
+      //   console.log(user);
+      //   console.log(bookId);
 
-    //   user.library.items.push(bookId);
-    // });
-    console.log("Added Book");
-    res.redirect("/admin/books");
-  });
+      //   user.library.items.push(bookId);
+      // });
+    })
+    .then((result) => {
+      console.log("Added Book");
+      res.redirect("/admin/books");
+    });
 };
 
 exports.getEditBook = (req, res, next) => {
@@ -104,4 +109,20 @@ exports.postDeleteBook = (req, res, next) => {
       res.redirect("/admin/books");
     })
     .catch((err) => console.log(err));
+};
+
+exports.getMyBooks = (req, res, next) => {
+  console.log("req.user");
+
+  console.log(req.user);
+  req.user.populate("library.items.bookId").then((user) => {
+    const books = user.library.items;
+    console.log(books);
+    res.render("admin/books", {
+      books: books,
+      pageTitle: "Book List",
+      path: "/admin/books",
+      isAuthenticated: req.session.isLoggedIn,
+    });
+  });
 };

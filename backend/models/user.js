@@ -30,7 +30,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.addToLibrary = function (book) {
-  const libraryBookIndex = this.book.items.findIndex((book) => {
+  const libraryBookIndex = this.library.items.findIndex((book) => {
     return book.bookId.toString() === book._id.toString();
   });
   let newQuantity = 1;

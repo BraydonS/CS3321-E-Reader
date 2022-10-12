@@ -8,7 +8,7 @@ const isAuth = require("../middleware/is-auth");
 
 const router = express.Router();
 
-router.get("/books", isAuth, adminController.getBooks);
+router.get("/books", isAuth, adminController.getMyBooks);
 
 router.get("/add-book", isAuth, adminController.getAddBook);
 
