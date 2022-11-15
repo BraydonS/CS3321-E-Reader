@@ -3,14 +3,16 @@ import ePub from 'epubjs';
 export default{
     data() {
         return {
+          readerWidth: window.innerWidth/2,
+          readerHeight: window.innerHeight-20
         }
     },
     methods: {
       renderEpub() {
         this.book = new ePub("./assets/Dune.epub")
         this.rendition = this.book.renderTo('read', {
-          width: window.innerWidth/2,
-          height: window.innerHeight-20
+          width: this.readerWidth,
+          height: this.readerHeight,
         });
         this.rendition.display()
       } ,
@@ -28,7 +30,7 @@ export default{
 </script>
 
 <template>
-    <div class="book-wrapper">
+    <div class="book-wrapper center">
         <button type="button" @click="prevPage">Back</button>
         <div class="ebook">  
             <div id="read"></div>
@@ -40,17 +42,31 @@ export default{
 <style>
 .center {
   margin: auto;
-  width: 50%;
 }
 
 .ebook{
     display: inline-block;
+    border: 10px;
+    border-color: red;
 }
 
 button {
     display: inline-block;
+    position: relative;
+    margin: 0;
+    flex-grow: 1;
+
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .book-wrapper{
-    margin-left: 20%;
+    display: flex;
+    justify-content: center;
 }
 </style>
