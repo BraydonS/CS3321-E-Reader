@@ -8,6 +8,7 @@ on:
     branches: [ "feature/reader_page" ]
   pull_request:
     branches: [ "feature/reader_page" ]
+  workflow_disbatch:
 
 jobs:
   build:
