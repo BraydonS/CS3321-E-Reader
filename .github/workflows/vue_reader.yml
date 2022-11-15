@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "develop/reader_page" ]
+    branches: [ "feature/reader_page" ]
   pull_request:
-    branches: [ "develop/reader_page" ]
+    branches: [ "feature/reader_page" ]
 
 jobs:
   build:
