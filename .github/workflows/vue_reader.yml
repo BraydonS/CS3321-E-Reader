@@ -39,4 +39,4 @@ jobs:
       with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: vue_reader_gh_pages # The branch the action should deploy to.
-          FOLDER: 'frontend/ereader-frontend/build' # The folder the action should deploy.
+          FOLDER: 'frontend/ereader-frontend/dist' # The folder the action should deploy.
