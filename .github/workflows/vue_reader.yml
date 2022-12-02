@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 'frontend'
-
+         working-directory: 'frontend/ereader-frontend'
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -33,11 +32,11 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm run test:unit
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: vue_reader_gh_pages # The branch the action should deploy to.
-          FOLDER: dist # The folder the action should deploy.
+          FOLDER: 'frontend/ereader-frontend/dist' # The folder the action should deploy.
