@@ -10,9 +10,9 @@ export default{
     methods: {
       renderEpub() {
         this.book = new ePub("./assets/Dune.epub")
-        this.rendition = this.book.renderTo('read', {
-          width: this.readerWidth,
-          height: this.readerHeight,
+        this.rendition = this.book.renderTo('ebook', {
+          width: "100%",
+          height: "100%",
         });
         this.rendition.display()
       } ,
@@ -32,8 +32,7 @@ export default{
 <template>
     <div class="book-wrapper center">
         <button type="button" @click="prevPage">Back</button>
-        <div class="ebook">  
-            <div id="read"></div>
+        <div id="ebook">
         </div>
         <button type="button" @click="nextPage">Foreward</button>
     </div>
@@ -44,10 +43,12 @@ export default{
   margin: auto;
 }
 
-.ebook{
+#ebook{
     display: inline-block;
     border: 10px;
     border-color: red;
+    width: 70vw;
+    height: 40vw;
 }
 
 button {
