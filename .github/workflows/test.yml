@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm test
+        #When unit tests are made
+      #- run: npm test
 
   # test action works running from the graph
   test:
