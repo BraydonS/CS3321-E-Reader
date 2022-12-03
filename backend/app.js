@@ -97,7 +97,7 @@ const storage = new GridFsStorage({
 const upload = multer({
   storage
 });
-
+// file
 app.get("/fileinfo/:filename", (req, res) => {
   const file = bucket
     .find({
