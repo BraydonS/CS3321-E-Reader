@@ -5,6 +5,10 @@
 views/
 public/
 
+## Test server in frontend dir
+./frontend/ereader-frontend/models/
+./frontend/ereader-frontend/server.js
+
 ### Node ###
 # Logs
 logs

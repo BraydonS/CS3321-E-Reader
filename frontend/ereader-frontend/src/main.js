@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
-import './assets/main.css'
+import './CS3321-E-Reader/assets/main.css'
 
 createApp(App).mount('#app')
+

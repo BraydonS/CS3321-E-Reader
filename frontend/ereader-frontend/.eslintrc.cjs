@@ -5,6 +5,10 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended'
   ],
+  env: {
+    node: true,
+  },
+  
   overrides: [
     {
       files: [
