@@ -1,6 +1,5 @@
 <template>
   <div id="library-control">
-    <input class="file-input" type="file" @change="uploadFile" ref="file">
     <button id="upload">Upload Book</button>
   </div>
     <div class="book-list">
@@ -41,8 +40,19 @@
     display: grid;
     margin: auto;
     margin-left: 7em;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  @media only screen and (min-width: 1200px){
+    .book-list {
+      margin-top: 30px;
+      display: grid;
+      margin: auto;
+      margin-left: 7em;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+    
   
   .book-item {
     padding: 80px 20px;
@@ -67,7 +77,7 @@
   }
 
   #upload {
-    
+
   }
 
   </style>

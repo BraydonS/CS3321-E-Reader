@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <LibraryPage :books="books" />
+    <RegisterPage/>
   </div>
 </template>
 

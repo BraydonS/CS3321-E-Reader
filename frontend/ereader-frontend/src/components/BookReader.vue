@@ -69,7 +69,7 @@ button.reader-button {
     display: inline-block;
     font-size: 16px;
 }
-button:hover {
+button.reader-button:hover {
     display: inline-block;
     position: relative;
     margin: 0;

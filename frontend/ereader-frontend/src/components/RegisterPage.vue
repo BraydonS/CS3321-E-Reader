@@ -1,28 +1,38 @@
 <template>
     <div id="login">
       <form @submit.prevent="register">
-        <label for="username">Username</label>
-        <input class="register" selected id="username" type="text" v-model="username" />
+        <label for="name">Username</label>
+        <input class="register" selected id="name" type="text" v-model="name" />
+        <label for="email">Email</label>
+        <input selected class="login" id="email" type="text" v-model="email" />
         <label for="password">Password</label>
         <input class="register" id="password" type="password" v-model="password" />
         <div id="submit-buttons">
           <button class="form-button" type="submit">Submit</button>
-          <button class="form-button" type="back">Back</button>
+          <button class="form-button">Back</button>
         </div>
       </form>
     </div>
   </template>
   <script>
+  import axios from 'axios';
+
   export default {
     data() {
       return {
-        username: '',
+        name: '',
+        email: '',
         password: ''
       }
     },
     methods: {
       register() {
-        
+        let newUser = {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        }
+        axios.post('http://localhost:5000/signup', newUser)
       }
     }
   }
