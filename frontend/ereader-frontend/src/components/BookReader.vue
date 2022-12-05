@@ -9,7 +9,7 @@ export default{
     },
     methods: {
       renderEpub() {
-        this.book = new ePub("./assets/Dune.epub")
+        this.book = new ePub("./CS3321-E-Reader/assets/Dune.epub")
         this.rendition = this.book.renderTo('ebook', {
           width: "100%",
           height: "100%",
@@ -21,7 +21,7 @@ export default{
       },
       prevPage(){
         this.rendition.prev()
-      } 
+      }
     },
     mounted() {
         this.renderEpub()
@@ -31,10 +31,13 @@ export default{
 
 <template>
     <div class="book-wrapper center">
-        <button type="button" @click="prevPage">Back</button>
+        <button class="reader-button" type="button" @keydown.left="prevPage" @click="prevPage"></button>
         <div id="ebook">
         </div>
-        <button type="button" @click="nextPage">Foreward</button>
+        <button class="reader-button" type="button" @keydown.right="nextPage" @click="nextPage"></button>
+    </div>
+    <div id="book-controls">
+      
     </div>
 </template>
 
@@ -51,13 +54,29 @@ export default{
     height: 40vw;
 }
 
-button {
+button.reader-button {
     display: inline-block;
     position: relative;
     margin: 0;
     flex-grow: 1;
 
     background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+button:hover {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    flex-grow: 1;
+
+    background-color: gray; /* Green */
+    opacity: 0.10;
     border: none;
     color: black;
     padding: 15px 32px;
