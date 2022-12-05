@@ -1,7 +1,7 @@
 <template>
     <div id="login">
       <form @submit.prevent="register">
-        <label for="name">Username</label>
+        <label for="name">Name</label>
         <input class="register" selected id="name" type="text" v-model="name" />
         <label for="email">Email</label>
         <input selected class="login" id="email" type="text" v-model="email" />
@@ -15,7 +15,6 @@
     </div>
   </template>
   <script>
-  import axios from 'axios';
 
   export default {
     data() {
@@ -32,7 +31,6 @@
           email: this.email,
           password: this.password
         }
-        axios.post('http://localhost:5000/signup', newUser)
       }
     }
   }
