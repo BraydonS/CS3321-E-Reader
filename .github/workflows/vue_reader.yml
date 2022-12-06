@@ -5,9 +5,9 @@ name: BookReader
 
 on:
   push:
-    branches: [ "feature/reader_page" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "feature/reader_page" ]
+    branches: [ "develop" ]
   workflow_dispatch:
 
 jobs:
