@@ -2,16 +2,12 @@
 
 <template>
   <div id="library-control">
-    <button class="library-control-buttons" @click="changeUploadVis" id="upload">Upload Book</button>
   </div>
     <div class="book-list">
-      <div v-for="book in books" :key="book.title" class="book-item">
+      <div v-for="book in books" :key="book.title" class="book-item" @click="loadReader(book.id)">
         <p id="title">{{ book.title }}</p>
         <p>{{ book.author }}</p>
       </div>
-    </div>
-    <div v-if="showUpload">
-      <UploadBook/>
     </div>
     
   </template>
@@ -19,25 +15,27 @@
  
   
   <script scoped>
-  import UploadBook from '../components/UploadBook.vue';
   import { ref, onMounted } from 'vue'
 
   export default {
     data() {
       return{
-        showUpload: false
+        showUpload: false,
+        books: [
+        { id:0, title: 'Dune', author: 'Frank Herbert', url: "./CS3321-E-Reader/assets/Dune.epub"},
+        { id:1, title: 'A Room With A View', author: 'E. M. Forster', url:"./CS3321-E-Reader/assets/aroom.epub" },
+        { id:2, title: 'book3', author: 'author3' },
+        { id:3, title: 'book4', author: 'author4' },
+        { id:4, title: 'book4', author: 'author4' },
+        { id:5, title: 'book4', author: 'author4' },
+        { id:6, title: 'book4', author: 'author4' },
+        { id:7, title: 'book4', author: 'author4' },
+        // ...
+      ]
       }
       
     },
     components:{
-      UploadBook
-    },
-    name: 'BookList',
-    props: {
-      books: {
-        type: Array,
-        required: true,
-      }
     },
     setup() {
       const file = ref(null)
@@ -48,13 +46,10 @@
       }
     },
     methods: {
-      changeUploadVis(){
-        if (this.showUpload == false){
-          this.showUpload = true
-        }
-        else {
-          this.showUpload = false
-        }
+      loadReader(id){
+        let book = this.books.find(book => book.id === id);
+        console.log(book.url)
+        this.$router.replace({name:'Reader', params:{activeBook: book.url}});
       }
     }
   }

@@ -1,6 +1,12 @@
 <script>
 import ePub from 'epubjs';
 export default{
+  props: {
+      activeBook: {
+        type: String,
+        required: true
+      }
+  },
     data() {
         return {
           readerWidth: window.innerWidth/2,
@@ -8,8 +14,12 @@ export default{
         }
     },
     methods: {
+      back (){
+        this.$router.replace({name:'Library'})
+      },
+      
       renderEpub() {
-        this.book = new ePub("./CS3321-E-Reader/assets/Dune.epub")
+        this.book = new ePub(this.activeBook)
         this.rendition = this.book.renderTo('ebook', {
           width: "100%",
           height: "100%",
@@ -25,11 +35,15 @@ export default{
     },
     mounted() {
         this.renderEpub()
-    }
+    },
+    
 }
 </script>
 
 <template>
+  <div class="nav">
+    <button class="back" @click="back">Back</button>
+  </div>
     <div class="book-wrapper center">
         <button class="reader-button" type="button" @keydown.left="prevPage" @click="prevPage"></button>
         <div id="ebook">
@@ -89,4 +103,43 @@ button.reader-button:hover {
     display: flex;
     justify-content: center;
 }
+
+div.nav {
+  height: auto;
+}
+
+button.back {
+    width: 80px;
+    opacity: 0.66;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px 8px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+    button.back:hover {
+    width: 80px;
+    position: relative;
+    bottom: 0px;
+    padding: 8px;
+    margin: 8px 8px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: blue;
+  }
+    button.back:active {
+    width: 80px;
+    position: relative;
+    opacity: 1;
+    bottom: 1px;
+    padding: 8px;
+    margin: 8px 8px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: blue;
+  }
 </style>

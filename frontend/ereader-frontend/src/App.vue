@@ -5,23 +5,15 @@
 </template>
 
 <script>
-
+import LibraryPage from './views/LibraryPage.vue';
+import BookReader from './views/BookReader.vue';
 
 export default {
+  components: {
+  },
   name: 'App',
   data() {
     return {
-      books: [
-        { title: 'book1', author: 'author1' },
-        { title: 'book2', author: 'author2' },
-        { title: 'book3', author: 'author3' },
-        { title: 'book4', author: 'author4' },
-        { title: 'book4', author: 'author4' },
-        { title: 'book4', author: 'author4' },
-        { title: 'book4', author: 'author4' },
-        { title: 'book4', author: 'author4' },
-        // ...
-      ]
     }
   }
 }
