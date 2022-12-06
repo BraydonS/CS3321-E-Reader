@@ -22,9 +22,9 @@
       return{
         showUpload: false,
         books: [
-        { id:0, title: 'Dune', author: 'Frank Herbert', url: "./CS3321-E-Reader/assets/Dune.epub"},
-        { id:1, title: 'A Room With A View', author: 'E. M. Forster', url:"./CS3321-E-Reader/assets/aroom.epub" },
-        { id:2, title: 'Moby Dick', author: 'Herman Melville', url:"./CS3321-E-Reader/assets/moby.epub" },
+        { id:0, title: 'Dune', author: 'Frank Herbert', url: "./assets/Dune.epub"},
+        { id:1, title: 'A Room With A View', author: 'E. M. Forster', url:"./assets/aroom.epub" },
+        { id:2, title: 'Moby Dick', author: 'Herman Melville', url:"./assets/moby.epub" },
         // ...
       ]
       }
