@@ -30,14 +30,6 @@ exports.postAddBook = (req, res, next) => {
       const bookId = result._id;
       console.log(bookId);
       return req.user.addToLibrary(result);
-      // User.findOne({ _id: userId }).then((user) => {
-      //   console.log("user");
-
-      //   console.log(user);
-      //   console.log(bookId);
-
-      //   user.library.items.push(bookId);
-      // });
     })
     .then((result) => {
       console.log("Added Book");
@@ -47,9 +39,11 @@ exports.postAddBook = (req, res, next) => {
 
 exports.getEditBook = (req, res, next) => {
   const editMode = req.query.edit;
-  if (!editMode) {
-    return res.redirect("/");
-  }
+  //console.log("req", req)
+  console.log("edit mode",req.query.edit);
+  // if (!editMode) {
+  //   return res.redirect("/");
+  // }
   const bookId = req.params.bookId;
   console.log(req.params.bookId);
   Book.findById(bookId)
