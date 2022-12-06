@@ -6,7 +6,7 @@
     <div class="book-list">
       <div v-for="book in books" :key="book.title" class="book-item" @click="loadReader(book.id)">
         <p id="title">{{ book.title }}</p>
-        <p>{{ book.author }}</p>
+        <p id="author">{{ book.author }}</p>
       </div>
     </div>
     
@@ -24,12 +24,7 @@
         books: [
         { id:0, title: 'Dune', author: 'Frank Herbert', url: "./CS3321-E-Reader/assets/Dune.epub"},
         { id:1, title: 'A Room With A View', author: 'E. M. Forster', url:"./CS3321-E-Reader/assets/aroom.epub" },
-        { id:2, title: 'book3', author: 'author3' },
-        { id:3, title: 'book4', author: 'author4' },
-        { id:4, title: 'book4', author: 'author4' },
-        { id:5, title: 'book4', author: 'author4' },
-        { id:6, title: 'book4', author: 'author4' },
-        { id:7, title: 'book4', author: 'author4' },
+        { id:2, title: 'Moby Dick', author: 'Herman Melville', url:"./CS3321-E-Reader/assets/moby.epub" },
         // ...
       ]
       }
@@ -74,7 +69,10 @@
     }
   }
     
-  
+  p{
+    color:wheat;
+  }
+
   .book-item {
     padding: 80px 20px;
     width: 200px;

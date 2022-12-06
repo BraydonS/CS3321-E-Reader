@@ -25,16 +25,38 @@ export default{
           height: "100%",
         });
         this.rendition.display()
+        this.book.loaded.navigation.then(function(toc){
+        var $select = document.getElementById("toc"),
+            docfrag = document.createDocumentFragment();
+
+        toc.forEach(function(chapter) {
+          var option = document.createElement("option");
+          option.textContent = chapter.label;
+          option.ref = chapter.href;
+
+          docfrag.appendChild(option);
+        });
+
+        $select.appendChild(docfrag);
+
+      });
       } ,
       nextPage(){
         this.rendition.next()
       },
       prevPage(){
         this.rendition.prev()
+      },
+      updateChapter(){
+        var $select = document.getElementById("toc")
+        var index = $select.selectedIndex,
+          url = $select.options[index].ref;
+        this.rendition.display(url);
       }
     },
     mounted() {
         this.renderEpub()
+        
     },
     
 }
@@ -43,6 +65,7 @@ export default{
 <template>
   <div class="nav">
     <button class="back" @click="back">Back</button>
+    <select @change="updateChapter" id="toc"></select>
   </div>
     <div class="book-wrapper center">
         <button class="reader-button" type="button" @keydown.left="prevPage" @click="prevPage"></button>
@@ -58,6 +81,23 @@ export default{
 <style scoped>
 .center {
   margin: auto;
+}
+
+select{
+    width: 200px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+    background-color: gray;
+}
+
+select:hover{
+    opacity: 0.66;
+    background-color: rgba(0, 0, 255, 1);
+    text-decoration: none;
+    border: none;
+    color: white;
 }
 
 #ebook{
@@ -105,26 +145,22 @@ button.reader-button:hover {
 }
 
 div.nav {
-  height: auto;
+  height: 40px;
+  display: flex;
+  background-color: gray;
 }
 
 button.back {
     width: 80px;
-    opacity: 0.66;
-    border-radius: 5px;
-    padding: 8px;
-    margin: 8px 8px;
     text-decoration: none;
     border: none;
     color: white;
-    background-color: black;
+    background-color: gray;
   }
     button.back:hover {
+    opacity:0.66;
     width: 80px;
     position: relative;
-    bottom: 0px;
-    padding: 8px;
-    margin: 8px 8px;
     text-decoration: none;
     border: none;
     color: white;
@@ -133,10 +169,6 @@ button.back {
     button.back:active {
     width: 80px;
     position: relative;
-    opacity: 1;
-    bottom: 1px;
-    padding: 8px;
-    margin: 8px 8px;
     text-decoration: none;
     border: none;
     color: white;
