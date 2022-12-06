@@ -1,23 +1,14 @@
 <template>
   <div id="app">
-    <RegisterPage/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import LibraryPage from './components/LibraryPage.vue'
-import BookReader from './components/BookReader.vue';
-import LoginPage from './components/LoginPage.vue';
-import RegisterPage from './components/RegisterPage.vue';
+
 
 export default {
   name: 'App',
-  components: {
-    BookReader,
-    LibraryPage,
-    LoginPage,
-    RegisterPage,
-  },
   data() {
     return {
       books: [

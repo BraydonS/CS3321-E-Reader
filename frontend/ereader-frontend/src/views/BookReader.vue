@@ -41,7 +41,7 @@ export default{
     </div>
 </template>
 
-<style>
+<style scoped>
 .center {
   margin: auto;
 }
