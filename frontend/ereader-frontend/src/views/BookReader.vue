@@ -15,6 +15,7 @@ export default{
     },
     methods: {
       back (){
+        this.book = new ePub()
         this.$router.replace({name:'Library'})
       },
       
