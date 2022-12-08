@@ -105,6 +105,25 @@
     box-shadow: 5px 0px wheat;
     
   }
+  .book-item:hover {
+    padding: 60px 20px;
+    width: 200px;
+    position: relative;
+    bottom: 5px;
+    height: 300px;
+    margin-top: 10px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #6e4616;
+    border-color: #6e4616;
+    box-shadow: 5px 0px wheat;
+    
+  }
 
   #title {
     font-size: 25px;

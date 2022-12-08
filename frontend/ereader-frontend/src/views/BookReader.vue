@@ -9,8 +9,6 @@ export default{
   },
     data() {
         return {
-          readerWidth: window.innerWidth/2,
-          readerHeight: window.innerHeight-20
         }
     },
     methods: {
@@ -19,7 +17,6 @@ export default{
         ebook.innerHTML = "";
         this.$router.replace({name:'Library'})
       },
-      
       renderEpub() {
         this.book = new ePub(this.activeBook)
         this.rendition = this.book.renderTo('ebook', {
@@ -59,25 +56,26 @@ export default{
     mounted() {
         this.renderEpub()
         
-    },
+    }
     
 }
 </script>
 
 <template>
-  <div class="nav">
-    <button class="back" @click="back">Back</button>
-    <select @change="updateChapter" id="toc"></select>
-  </div>
-    <div class="book-wrapper center">
-        <button class="reader-button next-page" type="button" @keydown.left="prevPage" @click="prevPage"></button>
-        <div id="ebook">
-        </div>
-        <button class="reader-button prev-page" type="button" @keydown.right="nextPage" @click="nextPage"></button>
+    <div class="nav">
+      <button class="back" @click="back">Back</button>
+      <select @change="updateChapter" id="toc"></select>
     </div>
-    <div id="book-controls">
-      
-    </div>
+      <div class="book-wrapper center">
+          <button class="reader-button next-page" type="button" @keydown.left="prevPage" @click="prevPage">
+            <img class="arrow" src="../../assets/left_arrow.png"/>
+          </button>
+          <div id="ebook">
+          </div>
+          <button class="reader-button prev-page" type="button" @keydown.right="nextPage" @click="nextPage">
+            <img class="arrow" src="../../assets/right_arrow.png"/>
+          </button>
+      </div>
 </template>
 
 <style scoped>
@@ -102,12 +100,18 @@ select:hover{
     color: white;
 }
 
+img.arrow {
+  width: 20px;
+}
+
+
+
 #ebook{
     display: inline-block;
     border: 10px;
     border-color: red;
     width: 70vw;
-    height: 40vw;
+    height: 95vh;
 }
 
 button.reader-button {
@@ -131,8 +135,7 @@ button.reader-button:hover {
     margin: 0;
     flex-grow: 1;
 
-    background-color: gray; /* Green */
-    opacity: 0.10;
+    background-color: rgba(128, 128, 128, 0.125); /* Green */
     border: none;
     color: black;
     padding: 15px 32px;
