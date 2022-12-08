@@ -68,12 +68,10 @@ export default{
     </div>
       <div class="book-wrapper center">
           <button class="reader-button next-page" type="button" @keydown.left="prevPage" @click="prevPage">
-            <img class="arrow" src="../../assets/left_arrow.png"/>
           </button>
           <div id="ebook">
           </div>
           <button class="reader-button prev-page" type="button" @keydown.right="nextPage" @click="nextPage">
-            <img class="arrow" src="../../assets/right_arrow.png"/>
           </button>
       </div>
 </template>
