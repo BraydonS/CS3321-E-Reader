@@ -6,6 +6,10 @@ on:
       - main
       - develop
       - 'releases/*'
+      -
+defaults:
+  run:
+    working-directory: ./backend
 
 jobs:
   # unit tests
