@@ -13,9 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - run: npm ci
         #When unit tests are made
-      #- run: npm test
+      - run: npm test
 
   # test action works running from the graph
   test:
