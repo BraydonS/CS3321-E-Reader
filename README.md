@@ -3,7 +3,7 @@ An online E-Reader where users can store their books and be able to read them.
 
 ## Getting Started
 ### Installing
-* This project simply requires to be cloned and placed in a desired folder location.
+* This project simply requires Node.js to be downloaded separately. Once Node.js is downloaded, the project requires to be cloned and placed in a desired folder location.
 * Once cloned, in the terminal use the git command:
 ```
 cd frontend/ereader-frontend
@@ -19,7 +19,7 @@ http://localhost:5173/CS3321-E-Reader/
 ```
 
 ### Usage
-The program is designed to be used using buttons and clicks. All actions are labeled as well as being plcaed in spots that can be easily be found. 
+The program is designed to be used by buttons and clicks. All actions are labeled as well as being placed in spots that can be easily be found. 
 
 ## Authors
 * Hyunsu Kim - hyunsukim@isu.edu
