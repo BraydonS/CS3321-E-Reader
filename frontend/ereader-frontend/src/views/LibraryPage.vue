@@ -9,8 +9,8 @@
   <img src ="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" alt = "Profile Picture" class="avatar">
   
   <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+    <form>
+      <input v-model="message" type="text" placeholder="Search.." name="search">
     </form>
   </div>
   
@@ -25,7 +25,7 @@
   </div>
   <div class="main">
     <div class="book-list">
-      <div v-for="book in books" :key="book.id" class="book-item" @click="loadReader(book.id)">
+      <div v-for="book in filteredBooks" :key="book.id" class="book-item" @click="loadReader(book.id)">
         <p id="title">{{ book.title }}</p>
         <p id="author">{{ book.author }}</p>
       </div>
@@ -45,16 +45,25 @@
 
   export default {
     data() {
-      return{
-        showUpload: false,
-        books: [
+      let books = [
         { id:0, title: 'Dune', author: 'Frank Herbert', url: "./assets/Dune.epub"},
         { id:1, title: 'A Room With A View', author: 'E. M. Forster', url:"./assets/aroom.epub" },
         { id:2, title: 'Moby Dick', author: 'Herman Melville', url:"./assets/moby.epub" },
         // ...
       ]
+      return{
+        showUpload: false,
+        books: books,
+        message: ""
       }
       
+    },
+    computed: {
+      filteredBooks() {
+        return this.books.filter(p =>{
+          return p.title.toLowerCase().indexOf(this.message.toLowerCase()) != -1 || p.author.toLowerCase().indexOf(this.message.toLowerCase()) != -1;
+        })
+      }
     },
     methods: {
       loadReader(id){
