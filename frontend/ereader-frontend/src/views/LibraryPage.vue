@@ -25,7 +25,7 @@
   </div>
   <div class="main">
     <div class="book-list">
-      <div v-for="book in books" :key="book.title" class="book-item" @click="loadReader(book.id)">
+      <div v-for="book in books" :key="book.id" class="book-item" @click="loadReader(book.id)">
         <p id="title">{{ book.title }}</p>
         <p id="author">{{ book.author }}</p>
       </div>
@@ -42,7 +42,6 @@
 
   
   <script scoped>
-  import { ref, onMounted } from 'vue'
 
   export default {
     data() {
@@ -56,16 +55,6 @@
       ]
       }
       
-    },
-    components:{
-    },
-    setup() {
-      const file = ref(null)
-
-      const uploadFile = async() => {
-        // TODO: Implement upload logic
-        console.log("Add upload logic")
-      }
     },
     methods: {
       loadReader(id){
@@ -102,8 +91,8 @@
   .book-item {
     padding: 60px 20px;
     width: 200px;
-    margin: 2em 0em;
-    margin-bottom: 40px;
+    height: 300px;
+    margin-top: 10px;
     border-style: solid;
     display: flex;
     flex-direction: column;

@@ -70,10 +70,10 @@ export default{
     <select @change="updateChapter" id="toc"></select>
   </div>
     <div class="book-wrapper center">
-        <button class="reader-button" type="button" @keydown.left="prevPage" @click="prevPage"></button>
+        <button class="reader-button next-page" type="button" @keydown.left="prevPage" @click="prevPage"></button>
         <div id="ebook">
         </div>
-        <button class="reader-button" type="button" @keydown.right="nextPage" @click="nextPage"></button>
+        <button class="reader-button prev-page" type="button" @keydown.right="nextPage" @click="nextPage"></button>
     </div>
     <div id="book-controls">
       
